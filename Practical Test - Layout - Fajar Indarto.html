@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practical Test - Layout</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+        const footerContent = document.getElementById("flex-footer");
+        const toggleButton = document.getElementById("toggle-button");
+
+        toggleButton.addEventListener("click", function () {
+            if (footerContent.style.display === "none" || footerContent.style.display === "") {
+                footerContent.style.display = "block";
+                toggleButton.textContent = "Collapse all ∧";
+            } else {
+                footerContent.style.display = "none";
+                toggleButton.textContent = "Expand all ∨";
+            }
+        });
+    });
+
+    function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+    }
+
+    let scrollPosition = 0;
+    const scrollStep = 30;
+
+    function scrollProductCards(step) {
+        scrollPosition += step;
+        const container = document.querySelector(".flex-product-container");
+        container.scrollTo({
+            left: scrollPosition,
+            behavior: "smooth"
+        });
+    }
+
+document.getElementById("scrollLeftButton").addEventListener("click", () => scrollProductCards(-scrollStep));
+document.getElementById("scrollRightButton").addEventListener("click", () => scrollProductCards(scrollStep));
+
+
+    </script>
+</head>
+<style>
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .flex-container {
+        display: flex;
+        background-color: #f1f1f1;
+    }
+
+    .navbar {
+        background-color: rgb(3, 142, 160);
+        flex-basis: 100%;
+    }
+
+    .flex-navbar > div {
+        color: white;
+        text-align: left;
+        line-height: 30px;
+        font-size: 30px;
+        padding: 10px;
+    }
+
+    .box1 {
+        background-color: rgb(149, 255, 28);
+    }
+
+    .box2 {
+        background-color: rgb(0, 225, 255);
+    }
+
+    .box3 {
+        background-color: rgb(255, 28, 221);
+    }
+
+    .box4 {
+        background-color: rgb(255, 115, 28);
+    }
+
+    .box1, .box2 {
+        flex-basis: 100%;
+    }
+
+    .flex-container > div {
+        color: rgb(0, 0, 0);
+        margin: 10px;
+        text-align: center;
+        line-height: 180px;
+        font-size: 30px;
+    }
+
+    .box3, .box4 {
+        flex-basis: 100%;
+    }
+
+    .product-card {
+        width: 132px;
+        max-width: 182px;
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin: 10px;
+    }
+
+    .product-name {
+        font-family: Helvetica, Arial, sans-serif;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-bottom: 5px;
+    }
+
+    .product-image {
+        width: 100%;
+        height: auto;
+    }
+
+    .add-to-bag-button {
+        font-size: small;
+        font-family: Helvetica, Arial, sans-serif;
+        display: block;
+        background-color: #0095da;
+        border-color: #0095da;
+        color: #fff;
+        text-align: center;
+        padding: 5px;
+        margin-top: 10px;
+        text-decoration: none;
+        border-radius: 8px;
+    }
+
+    .product-price {
+        font-family: Helvetica, Arial, sans-serif;
+        color: #f37021;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    .product-price-discount {
+        font-size: small;
+        font-family: Helvetica, Arial, sans-serif;
+        align-items: center;
+        color: grey;
+        margin-top: 5px;
+    }
+
+    .product-discount {
+        font-size: small;
+        font-family: Helvetica, Arial, sans-serif;
+        padding: 1px 4px;
+        color: #e93c3c;
+        border-radius: 8px;
+        background-color: #ffdee0;
+    }
+
+    .flex-product-container {
+        display: flex;
+        flex-direction: row;
+        overflow-x: hidden;
+        white-space: nowrap;
+    }
+
+    .flex-footer {
+    display: none;
+    }
+
+    .footer-header {
+        text-align: center;
+        background-color: rgb(151, 151, 151);
+    }
+
+    #toggle-button {
+        color:rgb(3, 142, 160);
+        border: none;
+        cursor: pointer;
+        font-size: 15px;
+        margin: 0 auto;
+        background-color: rgb(151, 151, 151);
+    }
+
+    .footer {
+        background-color: rgb(151, 151, 151);
+        flex-basis: 100%;
+    }
+
+    .flex-footer > div {
+        color: rgb(0, 0, 0);
+        text-align: left;
+        line-height: 30px;
+        padding: 10px;
+    }
+
+    .scroll-to-top-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1;
+    }
+
+    #scrollButton:hover {
+        background-color: rgb(3, 142, 160);
+        color: rgb(255, 255, 255);
+    }
+
+    #scrollLeftButton {
+        position: absolute;
+        bottom: -15%;
+        transform: translateY(-50%);
+        background-color: white;
+        border: 50%;
+        cursor: pointer;
+        font-size: 24px;
+        color: #0095da;
+        padding: 0;
+        margin: 0;
+        outline: none;
+        left: 0;
+    }
+
+    #scrollRightButton {
+        position: absolute;
+        bottom: -15%;
+        transform: translateY(-50%);
+        background-color: white;
+        border: 50%;
+        cursor: pointer;
+        font-size: 24px;
+        color: #0095da;
+        padding: 0;
+        margin: 0;
+        outline: none;
+        right: 0;
+    }
+
+
+</style>
+<body>
+    <div class="flex-navbar">
+        <div class="navbar">Blibli</div>
+    </div>
+    <div class="flex-container">
+        <div class="box1">1</div>
+        <div class="box2">2</div>
+    </div>
+    <div class="flex-container">
+        <div class="box3">3</div>
+    </div>
+    <div class="flex-container">
+        <div class="box4">4</div>
+    </div>
+
+    <div class="flex-product-container">
+        <button id="scrollLeftButton" onclick="scrollProductCards(-30)">←</button>
+        <div class="product-card">
+            <img src="product1.jpeg" alt="product1" class="product-image">
+            <p class="product-name">Nike Aj1 Retro High White Blue University Blue Bla bla bla</p>
+            <p class="product-price">Rp.3.500.000</p>
+            <span class="product-price-discount">Rp.1.000.000</span>
+            <span class="product-discount">99%</span>
+            <a href="#" class="add-to-bag-button">Add to bag</a>
+        </div>
+        <div class="product-card">
+            <img src="product1.jpeg" alt="product1" class="product-image">
+            <p class="product-name">Nike Aj1 Retro High White Blue University Blue Bla bla bla</p>
+            <p class="product-price">Rp.3.500.000</p>
+            <span class="product-price-discount">Rp.1.000.000</span>
+            <span class="product-discount">99%</span>
+            <a href="#" class="add-to-bag-button">Add to bag</a>
+        </div>
+        <div class="product-card">
+            <img src="product1.jpeg" alt="product1" class="product-image">
+            <p class="product-name">Nike Aj1 Retro High White Blue University Blue Bla bla bla</p>
+            <p class="product-price">Rp.3.500.000</p>
+            <span class="product-price-discount">Rp.1.000.000</span>
+            <span class="product-discount">99%</span>
+            <a href="#" class="add-to-bag-button">Add to bag</a>
+        </div>
+        <div class="product-card">
+            <img src="product1.jpeg" alt="product1" class="product-image">
+            <p class="product-name">Nike Aj1 Retro High White Blue University Blue Bla bla bla</p>
+            <p class="product-price">Rp.3.500.000</p>
+            <span class="product-price-discount">Rp.1.000.000</span>
+            <span class="product-discount">99%</span>
+            <a href="#" class="add-to-bag-button">Add to bag</a>
+        </div>
+        <div class="product-card">
+            <img src="product1.jpeg" alt="product1" class="product-image">
+            <p class="product-name">Nike Aj1 Retro High White Blue University Blue Bla bla bla</p>
+            <p class="product-price">Rp.3.500.000</p>
+            <span class="product-price-discount">Rp.1.000.000</span>
+            <span class="product-discount">99%</span>
+            <a href="#" class="add-to-bag-button">Add to bag</a>
+        </div>
+        <div class="product-card">
+            <img src="product1.jpeg" alt="product1" class="product-image">
+            <p class="product-name">Nike Aj1 Retro High White Blue University Blue Bla bla bla</p>
+            <p class="product-price">Rp.3.500.000</p>
+            <span class="product-price-discount">Rp.1.000.000</span>
+            <span class="product-discount">99%</span>
+            <a href="#" class="add-to-bag-button">Add to bag</a>
+        </div>
+        <div class="product-card">
+            <img src="product1.jpeg" alt="product1" class="product-image">
+            <p class="product-name">Nike Aj1 Retro High White Blue University Blue Bla bla bla</p>
+            <p class="product-price">Rp.3.500.000</p>
+            <span class="product-price-discount">Rp.1.000.000</span>
+            <span class="product-discount">99%</span>
+            <a href="#" class="add-to-bag-button">Add to bag</a>
+        </div>
+        <div class="product-card">
+            <img src="product1.jpeg" alt="product1" class="product-image">
+            <p class="product-name">Nike Aj1 Retro High White Blue University Blue Bla bla bla</p>
+            <p class="product-price">Rp.3.500.000</p>
+            <span class="product-price-discount">Rp.1.000.000</span>
+            <span class="product-discount">99%</span>
+            <a href="#" class="add-to-bag-button">Add to bag</a>
+        </div>
+        <div class="product-card">
+            <img src="product1.jpeg" alt="product1" class="product-image">
+            <p class="product-name">Nike Aj1 Retro High White Blue University Blue Bla bla bla</p>
+            <p class="product-price">Rp.3.500.000</p>
+            <span class="product-price-discount">Rp.1.000.000</span>
+            <span class="product-discount">99%</span>
+            <a href="#" class="add-to-bag-button">Add to bag</a>
+        </div>
+        <div class="product-card">
+            <img src="product1.jpeg" alt="product1" class="product-image">
+            <p class="product-name">Nike Aj1 Retro High White Blue University Blue Bla bla bla</p>
+            <p class="product-price">Rp.3.500.000</p>
+            <span class="product-price-discount">Rp.1.000.000</span>
+            <span class="product-discount">99%</span>
+            <a href="#" class="add-to-bag-button">Add to bag</a>
+        </div>
+        <button id="scrollRightButton" onclick="scrollProductCards(30)">→</button>
+    </div>
+
+    <div class="flex-footer" id="flex-footer">
+        <div class="footer">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Pellentesque eget posuere magna. Cras turpis eget lacus pretium hendrerit. Pellentesque
+                    vitae dolor mauris. Class patent taciti sociosqu ad litora torquent per conubia nostra,
+                    per inceptos himenaeos. Phasellus viverra vitae augue sed consequat. Maecenas laoreet
+                    augue sed sem condimentum dictum. Maecenas et meteus auctor, placerat nisi pharetra, tempus nisl.
+                    donec pulvinar pharetra nisi, vel rhoncus dolor finibus eu. Fusce id sagittis libero, et posuere sem.
+                    Mauris ultricies lacinia ante, in semper nisl dictum at. Fusce venenatis augue non nisl tempus, eu Fringilla
+                    mauris lobortis. Class patent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+                    Nunc volutpat nunc tempus odio faucibus, sit amet ullamcorper metus eleifend
+                </p>
+        </div>
+    </div>
+    <div class="footer-header">
+        <button id="toggle-button">Expand all ∨</button>
+    </div>
+
+    <div class="scroll-to-top-button" id="scrollButton">
+        <button onclick="scrollToTop()">
+            ↑
+        </button>
+    </div>
+</body>
+
+</html>
